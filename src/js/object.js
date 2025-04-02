@@ -23,7 +23,7 @@ const character = {
 
 for (const el of character.special) {
     destructCharacter(el);  
-};
+}
 
 
 export function destructCharacter (specialEl) {
