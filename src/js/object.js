@@ -21,14 +21,30 @@ const character = {
     ]	
   }
 
-for (const el of character.special) {
-    destructCharacter(el);  
-}
+// for (const el of character.special) {
+//     destructCharacter(el);  
+// }
 
 
-export function destructCharacter (specialEl) {
-    let {id, name, icon, description = 'Описание недоступно'} = specialEl;
-    let arrResult = [id, name, description, icon];
-    console.log('Результат: ', arrResult);
-    return arrResult;
+// export function destructCharacter (specialEl) {
+//     let {id, name, icon, description = 'Описание недоступно'} = specialEl;
+//     let arrResult = [id, name, description, icon];
+//     console.log('Результат: ', arrResult);
+//     return arrResult;
+// }
+
+destructCharacter(character);
+
+export function destructCharacter (character) {
+    let {special} = character;
+    const new_arr = special.map((obj) => {
+        // if (obj.hasOwnProperty('description')) {
+        if (Object.prototype.hasOwnProperty.call(obj, 'description')) {
+            return {...obj}
+        } else {
+            return {...obj, description: 'Описание недоступно'}
+        } 
+    })
+    console.log(new_arr);
+    return new_arr;
 }
